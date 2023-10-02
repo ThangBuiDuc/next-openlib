@@ -4,7 +4,7 @@ import Numeric from "./numeric";
 export default function Index({ isOpen }) {
   return (
     <div
-      className={`md:mt-[30px] md:w-[20%] md:h-fit md:float-left [&>div+div]:mt-[10px] md:static z-[3] top-0 bottom-0 left-0 right-0 bg-white ${
+      className={`md:mt-[30px] md:w-[20%] md:float-left [&>div+div]:mt-[10px] md:static z-[3] top-0 bottom-0 left-0 right-0 bg-white ${
         isOpen ? "translate-x-[0%]" : "translate-x-[100%]"
       } duration-300 transition-all md:translate-x-0  fixed w-[100%] md:overflow-hidden overflow-x-auto pb-[10px] md:p-0`}
     >

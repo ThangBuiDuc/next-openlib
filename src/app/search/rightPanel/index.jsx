@@ -103,7 +103,7 @@ function Hit({ hit }) {
       <div className="flex w-full md:w-[80%] gap-[10px]">
         <div className="w-20%">
           <a href={hit.identifier_uri}>
-            <Image
+            <img
               src={
                 hit.bitstreams
                   ? hit.bitstreams
