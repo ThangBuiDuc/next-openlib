@@ -1,18 +1,15 @@
-import React from "react";
 import { RefinementList } from "react-instantsearch";
 import Numeric from "./numeric";
 
-export default function Index() {
+export default function Index({ isOpen }) {
   return (
-    <div className="mt-[30px] w-[20%] h-fit float-left [&>div+div]:mt-[10px] hidden md:block">
-      {/* <label
-        htmlFor="checkNav"
-        style={{ width: "fit-content", height: "fit-content" }}
-      >
-        <FontAwesomeIcon icon={faXmark} style={{ fontSize: "30px" }} />
-      </label> */}
-      <div>
-        <h2 className="text-left ml-[10px]">Đơn vị</h2>
+    <div
+      className={`md:mt-[30px] md:w-[20%] md:h-fit md:float-left [&>div+div]:mt-[10px] md:static z-[3] top-0 bottom-0 left-0 right-0 bg-white ${
+        isOpen ? "translate-x-[0%]" : "translate-x-[100%]"
+      } duration-300 transition-all md:translate-x-0  fixed w-[100%] md:overflow-hidden overflow-x-auto pb-[10px] md:p-0`}
+    >
+      <div className="mt-[50px] md:mt-0">
+        <h2 className="text-left pl-[5px]">Đơn vị</h2>
         <RefinementList
           attribute="organization"
           operator="or"
@@ -31,7 +28,7 @@ export default function Index() {
         />
       </div>
       <div>
-        <h2 className="text-left ml-[10px]">Bộ sưu tập</h2>
+        <h2 className="text-left pl-[5px]">Bộ sưu tập</h2>
         <RefinementList
           attribute="department"
           operator="or"
@@ -52,7 +49,7 @@ export default function Index() {
         />
       </div>
       <div>
-        <h2 className="text-left ml-[10px]">Năm phát hành</h2>
+        <h2 className="text-left pl-[5px]">Năm phát hành</h2>
         <Numeric
           attribute="date_issued"
           items={[
