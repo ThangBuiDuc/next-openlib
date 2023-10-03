@@ -1,7 +1,6 @@
 import InfiniteHits from "./infiniteHits";
 import Link from "next/link";
 import { Highlight } from "react-instantsearch";
-import Image from "next/image";
 import Stats from "./customStats";
 
 export default function Index() {
