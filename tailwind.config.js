@@ -7,13 +7,27 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      transitionProperty: {
+        height: "height",
+      },
+      colors: {
+        hovercl: "rgba(0, 0, 0, 0.05)",
+        bordercl: "#cccccc",
+        calendarBoder: "#27aecb",
+        overlay: "rgba(0,0,0,.5)",
       },
     },
   },
+
+  // daisyui: {
+  //   themes: [
+  //     {
+  //       mytheme: {
+  //         primary: "#0083C2",
+  //       },
+  //     },
+  //   ],
+  // },
   plugins: [
     require("tailwind-scrollbar")({ nocompatible: true }),
     require("daisyui"),

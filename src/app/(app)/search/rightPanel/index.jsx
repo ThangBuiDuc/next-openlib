@@ -124,14 +124,23 @@ function Hit({ hit }) {
           >
             <Highlight attribute="title" hit={hit} />
           </a>
-          <p className="md:text-[15px] text-[13px] mt-[5px]  text-[#808394]">
-            <Highlight attribute="author" hit={hit} separator="; " />
+          <p className="md:text-[15px] text-[13px] mt-[5px]">
+            <Highlight
+              attribute="author"
+              classNames={{ root: "text-[#808394]" }}
+              hit={hit}
+              separator="; "
+            />
           </p>
           <p className="mt-[5px] md:text-[15px] text-[13px] text-[black]">
             <Highlight attribute="description_abstract" hit={hit} />
           </p>
-          <p className="mt-[5px] text-[#808394] md:text-[15px] text-[13px]">
-            <Highlight attribute="publisher" hit={hit} />
+          <p className="mt-[5px]  md:text-[15px] text-[13px]">
+            <Highlight
+              classNames={{ root: "text-[#808394]" }}
+              attribute="publisher"
+              hit={hit}
+            />
           </p>
         </div>
       </div>

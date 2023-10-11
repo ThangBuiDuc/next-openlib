@@ -1,36 +1,36 @@
 @tailwind base;
+body {
+  @apply text-black;
+}
 h2 {
-  @apply text-[20px] md:text-[24px] font-semibold  text-black;
+  @apply text-[20px] md:text-[24px] font-semibold;
 }
 
 h3 {
-  @apply text-[16px] md:text-[18.72px] font-semibold  text-black;
-}
-
-a {
-  @apply text-black;
+  @apply text-[16px] md:text-[18.72px] font-semibold;
 }
 
 h1 {
   @apply text-4xl;
-  @apply font-bold  text-black;
+  @apply font-bold;
 }
 h4 {
   @apply text-xl;
-  @apply font-semibold  text-black;
+  @apply font-semibold;
 }
 h5 {
   @apply text-lg;
-  @apply font-semibold  text-black;
+  @apply font-semibold;
 }
 h6 {
   @apply text-sm;
-  @apply font-semibold  text-black;
+  @apply font-semibold;
 }
 
 p {
-  @apply font-normal text-black;
+  @apply font-normal;
 }
+
 @tailwind components;
 @tailwind utilities;
 
