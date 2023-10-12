@@ -37,10 +37,6 @@ export const sideBarData = [
         title: "Chỉnh sửa",
         path: "/admin/manage-doc/update",
       },
-      {
-        title: "Xoá",
-        path: "/admin/manage-doc/delete",
-      },
     ],
   },
 ];

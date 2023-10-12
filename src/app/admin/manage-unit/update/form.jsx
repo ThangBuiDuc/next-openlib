@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
-const Form = ({ data }) => {
+const Form = ({ data, isRefetching }) => {
   const queryClient = useQueryClient();
   const [process, setProcess] = useState(null);
   const [userName, setUserName] = useState(data.username);
@@ -99,9 +99,13 @@ const Form = ({ data }) => {
       </div>
 
       {process ? <p className="text-red-500">{process}</p> : <></>}
-      <button className="btn w-fit border-bordercl self-center hover:border-bordercl">
-        Chỉnh sửa
-      </button>
+      {isRefetching ? (
+        <span className="loading loading-spinner loading-lg self-center"></span>
+      ) : (
+        <button className="btn w-fit border-bordercl self-center hover:border-bordercl">
+          Chỉnh sửa
+        </button>
+      )}
     </form>
   );
 };

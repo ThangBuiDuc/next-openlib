@@ -69,6 +69,7 @@ export async function getListUser() {
       authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
       "Content-Type": "application/json",
     },
+    cache: "no-cache",
   });
 
   return res;

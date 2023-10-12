@@ -2,7 +2,7 @@ import Img from "./img";
 
 const Index = ({ content }) => {
   return (
-    <div className="p-[10px] md:p-[50px] w-fit h-fit">
+    <div className="p-[10px] md:p-[50px] w-full h-fit">
       <div>
         <p className="text-[15px] md:text-[18px] font-semibold">
           {content.title}

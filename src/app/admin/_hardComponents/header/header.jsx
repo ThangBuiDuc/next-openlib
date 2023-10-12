@@ -1,8 +1,10 @@
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useClerk } from "@clerk/clerk-react";
 
 const Header = ({ setIsOpen, user }) => {
+  const { signOut } = useClerk();
   return (
-    <div className="bg-white w-full h-[10%] flex justify-between items-center">
+    <div className="bg-white w-full h-[10vh] flex justify-between items-center">
       <div className="pl-[10px]">
         <RxHamburgerMenu
           size={35}
@@ -12,10 +14,10 @@ const Header = ({ setIsOpen, user }) => {
       </div>
       <div className="flex flex-col p-[10px] gap-[5px]">
         <h3>
-          {user?.publicMetadata.organization
-            ? user.publicMetadata.organization
-            : "Admin"}
+          {user?.publicMetadata.organization &&
+            user.publicMetadata.organization}
         </h3>
+        <button onClick={() => signOut()}>Đăng xuất</button>
       </div>
     </div>
   );

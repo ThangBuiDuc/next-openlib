@@ -52,7 +52,7 @@ const UpdateUnit = () => {
               {item.public_metadata.organization}
             </div>
             <div className="collapse-content ">
-              <Form data={item} />
+              <Form data={item} isRefetching={data.isRefetching} />
             </div>
           </div>
         ))}

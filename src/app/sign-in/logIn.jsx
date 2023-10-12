@@ -43,7 +43,9 @@ const LogIn = ({ isForgot, setIsForgot }) => {
         .then(async (result) => {
           if (result.status === "complete") {
             setActive({ session: result.createdSessionId });
-            !searchParams.get("redirect_url") && router.push("/admin");
+            searchParams.get("redirect_url")
+              ? router.push(searchParams.get("redirect_url"))
+              : router.push("/admin");
           }
         })
         .catch((err) => {

@@ -19,7 +19,7 @@ const SideBar = ({ isOpen }) => {
         isOpen ? "translate-x-0" : "translate-x-[-100%]"
       }`}
     >
-      <div className="flex justify-center h-[10%] bg-[#303C54]">
+      <div className="flex justify-center h-[10vh] bg-[#303C54]">
         <Link
           href="/admin/dashboard"
           className=" text-[40px] self-center text-center font-medium "

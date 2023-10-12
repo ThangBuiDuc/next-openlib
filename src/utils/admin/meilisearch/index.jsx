@@ -14,9 +14,52 @@ export const getOrganizaion = async () => {
     }
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
+  return res;
+};
 
-  return res.json();
+export const search = async (body, token) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}indexes/collection/search`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ ...body }),
+    }
+  );
+
+  return res;
+};
+
+export const addOrUpdateDoc = async (doc) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}indexes/collection/documents`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${process.env.ADMIN_API_KEY_LIB}`,
+      },
+      body: JSON.stringify([{ ...doc }]),
+    }
+  );
+
+  return res;
+};
+
+export const deleteDoc = async (docId) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_HOST}indexes/collection/${docId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${process.env.ADMIN_API_KEY_LIB}`,
+      },
+    }
+  );
+
+  return res;
 };

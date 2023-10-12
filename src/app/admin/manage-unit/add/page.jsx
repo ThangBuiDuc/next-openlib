@@ -12,7 +12,7 @@ const Page = async () => {
       </div>
     );
 
-  const organization = await getOrganizaion();
+  const organization = await getOrganizaion().then((res) => res.json());
 
   return <Content organization={organization.facetDistribution.organization} />;
 };

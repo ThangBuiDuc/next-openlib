@@ -7,6 +7,9 @@ export async function GET() {
 
   if (user.id && user.publicMetadata.isAdmin) {
     let data = await getOrganizaion(process.env.ADMIN_API_KEY_LIB);
+
+    if (!data.ok)
+      return NextResponse.json({ result: "Failed!" }, { status: 400 });
     return NextResponse.json({ data }, { status: 200 });
   }
   return NextResponse.json({ data: "Not Authorization!" }, { status: 400 });
