@@ -17,7 +17,7 @@ export default authMiddleware({
     //   );
     // }
   },
-  publicRoutes: ["/", "/home", "/search", "/detail/[uuid]"],
+  publicRoutes: ["/", "/home", "/search", "/detail"],
 });
 
 export const config = {
