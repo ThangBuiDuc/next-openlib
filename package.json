@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.11.1",
+    "@algolia/autocomplete-plugin-recent-searches": "^1.11.1",
+    "@algolia/autocomplete-theme-classic": "^1.11.1",
     "@clerk/nextjs": "^4.25.3",
     "@meilisearch/instant-meilisearch": "^0.13.5",
     "@react-spring/web": "^9.7.3",

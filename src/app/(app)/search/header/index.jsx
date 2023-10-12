@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CustomSearchBox from "./searchBox";
+import Autocomplete from "./autoComplete";
 // import Image from "next/image.js";
 export default function Index() {
   return (
@@ -19,12 +20,17 @@ export default function Index() {
         </Link>
       </div>
       <div className="flex w-full md:w-[70%] justify-center md:justify-normal items-center">
-        <CustomSearchBox />
-        <img
+        <Autocomplete
+          placeholder="Nhập vào thông tin tìm kiếm"
+          detachedMediaQuery="none"
+          openOnFocus
+        />
+        {/* <CustomSearchBox /> */}
+        {/* <img
           src="/iconSearch.svg"
           alt="Đây là icon search"
           className="rounded-[0px_40px_40px_0px] pr-[5px] bg-[#b0ddeb80] h-[34px] md:h-[55px]"
-        />
+        /> */}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ export default function Index({ hitComponent: HitComponent, ...props }) {
     if (sentinelRef.current !== null) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !isLastPage) {
+          if (entry.isIntersecting && !isLastPage && showMore) {
             showMore();
           }
         });
