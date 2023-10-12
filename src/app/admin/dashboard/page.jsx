@@ -1,15 +1,17 @@
 import { currentUser } from "@clerk/nextjs";
+import { getOrganizaion } from "@/utils/admin/meilisearch";
+import Content from "./content";
 
 const Page = async () => {
   const user = await currentUser();
 
-  if (!user.publicMetadata.isAdmin)
-    return (
-      <div className="flex justify-center pt-[20px]">
-        <h3>Tài khoản hiện tại không có quyền thực hiện chức năng này!</h3>
-      </div>
-    );
-  return <>Page</>;
+  const organization = await getOrganizaion().then((res) => res.json());
+  return (
+    <Content
+      publicMetadata={user.publicMetadata}
+      organization={organization.facetDistribution.organization}
+    />
+  );
 };
 
 export default Page;
