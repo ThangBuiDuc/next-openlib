@@ -32,8 +32,8 @@ const UpdateUnit = () => {
   return (
     listUser && (
       <div className="flex flex-col p-[10px] gap-[10px]">
-        {listUser.map((item) => (
-          <div className="collapse collapse-arrow bg-base-300">
+        {listUser.map((item, index) => (
+          <div key={index} className="collapse collapse-arrow bg-base-300">
             <input
               type="radio"
               name="my-accordion-2"
