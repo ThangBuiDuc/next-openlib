@@ -1,12 +1,12 @@
 import InfiniteHits from "./infiniteHits";
 import Link from "next/link";
 import { Highlight } from "react-instantsearch";
-import Stats from "./customStats";
+// import Stats from "./customStats";
 
 export default function Index() {
   return (
     <div className="w-full md:w-[80%] ">
-      <Stats />
+      {/* <Stats /> */}
       <InfiniteHits hitComponent={Hit} />
     </div>
   );

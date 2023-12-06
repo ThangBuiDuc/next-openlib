@@ -1,6 +1,6 @@
 import Link from "next/link";
 import CustomSearchBox from "./searchBox";
-import Autocomplete from "./autoComplete";
+// import Autocomplete from "./autoComplete";
 import { useClerk } from "@clerk/nextjs";
 // import Image from "next/image.js";
 export default function Index({ fullName, publicMetadata }) {
@@ -22,11 +22,12 @@ export default function Index({ fullName, publicMetadata }) {
         </Link>
       </div>
       <div className="flex w-full md:w-[70%] justify-center md:justify-normal items-center">
-        <Autocomplete
+        {/* <Autocomplete
           placeholder="Nhập vào thông tin tìm kiếm"
           detachedMediaQuery="none"
           openOnFocus
-        />
+        /> */}
+        <CustomSearchBox />
       </div>
       {!fullName && !publicMetadata ? (
         <></>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { useSearchBox } from "react-instantsearch";
+// import { useSearchBox } from "react-instantsearch";
+import { useSearchBox } from "react-instantsearch-hooks-web";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
