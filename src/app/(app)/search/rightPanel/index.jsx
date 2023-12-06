@@ -146,7 +146,7 @@ function Hit({ hit }) {
       </div>
       <div className="mt-[5px] flex md:w-[20%] justify-center md:justify-end">
         <Link
-          className="text-blue-600 text-[13px] md:text-[15px]"
+          className="text-blue-600 text-[13px] md:text-[15px] h-fit"
           href={`/detail/${hit.uuid}`}
         >
           Xem chi tiết

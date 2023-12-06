@@ -1,7 +1,10 @@
+"use client";
 import Link from "next/link";
 import SearchBox from "./searchBox";
+import { useClerk } from "@clerk/nextjs";
 
-const Index = () => {
+const Index = ({ fullName, publicMetadata }) => {
+  const { signOut } = useClerk();
   return (
     <div className="md:flex-row flex-col flex border-b border-black">
       <div className=" flex justify-center p-[5px]">
@@ -26,6 +29,23 @@ const Index = () => {
           className="rounded-[0px_40px_40px_0px] pr-[5px] bg-[#b0ddeb80] h-[34px] md:h-[55px]"
         />
       </div>
+      {!fullName && !publicMetadata ? (
+        <></>
+      ) : (
+        <div className="flex justify-center flex-col">
+          {Object.keys(publicMetadata).length > 0 ? (
+            <>
+              <h3>{publicMetadata.organization}</h3>
+              <button onClick={() => signOut()}>Đăng xuất</button>
+            </>
+          ) : (
+            <>
+              <h3>{fullName}</h3>
+              <button onClick={() => signOut()}>Đăng xuất</button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

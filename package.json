@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.11.1",
+    "@algolia/autocomplete-plugin-query-suggestions": "^1.11.1",
     "@algolia/autocomplete-plugin-recent-searches": "^1.11.1",
     "@algolia/autocomplete-theme-classic": "^1.11.1",
+    "@clerk/localizations": "^1.26.7",
     "@clerk/nextjs": "^4.25.3",
     "@meilisearch/instant-meilisearch": "^0.13.5",
     "@react-spring/web": "^9.7.3",
@@ -21,11 +23,15 @@
     "encoding": "^0.1.13",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.2",
+    "exceljs": "^4.4.0",
+    "file-saver": "^2.0.5",
     "jsonwebtoken": "^9.0.2",
     "meilisearch": "^0.35.0",
     "next": "13.5.2",
+    "papaparse": "^5.4.1",
     "postcss": "8.4.30",
     "react": "18.2.0",
+    "react-csv": "^2.2.2",
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
     "react-instantsearch": "^7.1.0",
@@ -37,7 +43,8 @@
     "sweetalert2": "^11.7.32",
     "tailwind-scrollbar": "^3.0.5",
     "tailwindcss": "3.3.3",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "daisyui": "^3.8.3"

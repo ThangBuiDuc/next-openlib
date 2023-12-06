@@ -1,6 +1,8 @@
+// import BorrowBtn from "./borrowBtn";
 import Img from "./img";
+// import { SignInButton } from "@clerk/nextjs";
 
-const Index = ({ content }) => {
+const Index = ({ content, publicMetadata, auth }) => {
   return (
     <div className="p-[10px] md:p-[50px] w-full h-fit">
       <div>
@@ -40,6 +42,13 @@ const Index = ({ content }) => {
               </p>
             </div>
           </div>
+          {/* {auth ? (
+            Object.keys(publicMetadata).length === 0 && <BorrowBtn />
+          ) : (
+            <SignInButton>
+              <button className="btn self-center">Mượn sách</button>
+            </SignInButton>
+          )} */}
         </div>
 
         <div className="flex flex-col gap-[20px] w-full mt-[50px] md:mt-[100px]">

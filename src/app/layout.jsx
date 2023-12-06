@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ReactQueryProvider from "./reactQueryProvider";
 import localFont from "next/font/local";
+import { viVN } from "@clerk/localizations";
 
 const montserrat = localFont({
   src: [
@@ -21,9 +22,7 @@ const montserrat = localFont({
 export default function RootLayout({ children }) {
   return (
     <ReactQueryProvider>
-      <ClerkProvider
-        publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-      >
+      <ClerkProvider localization={viVN}>
         <html lang="vi">
           <body className={`${montserrat.className} bg-white `}>
             {children}

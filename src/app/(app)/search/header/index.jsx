@@ -1,8 +1,10 @@
 import Link from "next/link";
 import CustomSearchBox from "./searchBox";
 import Autocomplete from "./autoComplete";
+import { useClerk } from "@clerk/nextjs";
 // import Image from "next/image.js";
-export default function Index() {
+export default function Index({ fullName, publicMetadata }) {
+  const { signOut } = useClerk();
   return (
     <div className="flex-col md:flex-row flex border-b-[1px] border-solid border-black top-0 left-0 p-[10px] float-left gap-[10px] w-full">
       <div className="flex justify-center">
@@ -25,13 +27,24 @@ export default function Index() {
           detachedMediaQuery="none"
           openOnFocus
         />
-        {/* <CustomSearchBox /> */}
-        {/* <img
-          src="/iconSearch.svg"
-          alt="Đây là icon search"
-          className="rounded-[0px_40px_40px_0px] pr-[5px] bg-[#b0ddeb80] h-[34px] md:h-[55px]"
-        /> */}
       </div>
+      {!fullName && !publicMetadata ? (
+        <></>
+      ) : (
+        <div className="flex justify-center flex-col">
+          {Object.keys(publicMetadata).length > 0 ? (
+            <>
+              <h3>{publicMetadata.organization}</h3>
+              <button onClick={() => signOut()}>Đăng xuất</button>
+            </>
+          ) : (
+            <>
+              <h3>{fullName}</h3>
+              <button onClick={() => signOut()}>Đăng xuất</button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

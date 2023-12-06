@@ -44,10 +44,14 @@ export async function PUT(req) {
   const doc = await req.json();
 
   if (user.id && user.publicMetadata.isAdmin) {
-    let data = await addOrUpdateDoc({
-      ...doc,
-      uuid: doc.uuid ? doc.uuid : uuidv4(),
-    });
+    let data = await addOrUpdateDoc(
+      Array.isArray(doc)
+        ? doc.map((item) => ({ ...item, uuid: uuidv4() }))
+        : {
+            ...doc,
+            uuid: doc.uuid ? doc.uuid : uuidv4(),
+          }
+    );
     if (!data.ok)
       return NextResponse.json({ result: "Failed!" }, { status: 400 });
     return NextResponse.json({ result: "Successfully!" }, { status: 200 });

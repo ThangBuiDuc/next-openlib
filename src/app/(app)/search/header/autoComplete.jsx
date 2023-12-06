@@ -13,8 +13,11 @@ import { usePagination, useSearchBox } from "react-instantsearch";
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import { createLocalStorageRecentSearchesPlugin } from "@algolia/autocomplete-plugin-recent-searches";
+// import { createQuerySuggestionsPlugin } from "@algolia/autocomplete-plugin-query-suggestions";
+// import { searchClientContext } from "../content";
+// import { useContext } from "react";
 
-export default function Autocomplete({ ...autocompleteProps }) {
+export default function Autocomplete({ searchClient, ...autocompleteProps }) {
   const autocompleteContainer = useRef(null);
   const panelRootRef = useRef(null);
   const rootRef = useRef(null);
@@ -109,6 +112,32 @@ export default function Autocomplete({ ...autocompleteProps }) {
         };
       },
     });
+
+    // const querySuggestions = createQuerySuggestionsPlugin({
+    //   searchClient,
+    //   indexName: "collection",
+    //   getSearchParams() {
+    //     return recentSearches.data.getAlgoliaSearchParams({
+    //       hitsPerPage: 6,
+    //     });
+    //   },
+    //   transformSource({ source }) {
+    //     return {
+    //       ...source,
+    //       sourceId: "querySuggestionsPlugin",
+    //       onSelect({ item }) {
+    //         setInstantSearchUiState({ query: item.query });
+    //       },
+    //       getItems(params) {
+    //         if (!params.state.query) {
+    //           return [];
+    //         }
+
+    //         return source.getItems(params);
+    //       },
+    //     };
+    //   },
+    // });
 
     return [recentSearches];
   }, []);
