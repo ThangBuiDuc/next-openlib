@@ -26,6 +26,7 @@ export const dynamic = "force-dynamic";
 
 export default function SearchPage({ fullName, publicMetadata }) {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(1);
 
   useEffect(() => {
     const handleWidthChage = () => {
