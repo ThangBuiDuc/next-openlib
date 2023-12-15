@@ -14,7 +14,7 @@ import { createContext } from "react";
 export const searchClientContext = createContext(null);
 
 const searchClient = instantMeiliSearch(
-  process.env.NEXT_PUBLIC_HOST,
+  "edge.meilisearch.com",
   process.env.NEXT_PUBLIC_API_KEY,
   {
     primaryKey: "uuid",
