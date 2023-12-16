@@ -33,6 +33,19 @@ export const search = async (body, token) => {
   return res;
 };
 
+export const click = async (body) => {
+  const res = await fetch(`http://edge.meilisearch.com`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
+    },
+    body: JSON.stringify(body),
+  });
+
+  return res;
+};
+
 export const addOrUpdateDoc = async (doc) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_HOST}indexes/collection/documents`,

@@ -2,6 +2,7 @@ import InfiniteHits from "./infiniteHits";
 import Link from "next/link";
 import { Highlight } from "react-instantsearch";
 import Stats from "./customStats";
+import { click } from "@/utils/admin/meilisearch";
 
 export default function Index() {
   return (
@@ -12,7 +13,7 @@ export default function Index() {
   );
 }
 
-function Hit({ hit }) {
+function Hit({ hit, index }) {
   const handleError = (e, organization) => {
     switch (organization.trim()) {
       case "Trường Đại học Quản Lý và Công Nghệ Hải Phòng": {
@@ -98,7 +99,18 @@ function Hit({ hit }) {
   };
 
   return (
-    <div className="flex w-[100%] p-[10px] flex-col md:flex-row">
+    <div
+      className="flex w-[100%] p-[10px] flex-col md:flex-row"
+      onClick={() =>
+        click({
+          eventType: "click",
+          eventName: `Search ${hit.title} Result Clicked`,
+          indexUid: "collection",
+          objectID: hit.uuid,
+          position: index,
+        })
+      }
+    >
       <div className="flex w-full md:w-[80%] gap-[10px]">
         <div className="w-20%">
           <a href={hit.identifier_uri}>
