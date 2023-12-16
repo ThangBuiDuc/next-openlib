@@ -26,12 +26,12 @@ export default function Index({ hitComponent: HitComponent, ...props }) {
   return (
     <div className="pb-[1px]">
       <ul className="flex flex-col gap-[10px] w-full pr-[5px]">
-        {hits.map((hit) => (
+        {hits.map((hit, index) => (
           <li
             key={hit.objectID}
             className="border-solid transparent rounded-[3px] m-[0_0_3px] pd-[1rem] shadow-[0_2px_5px_0_#e3e5ec] drop-shadow-[0_1px_#fff]"
           >
-            <HitComponent hit={hit} />
+            <HitComponent hit={hit} index={index} />
           </li>
         ))}
         {/* {isLastPage === false ? (
