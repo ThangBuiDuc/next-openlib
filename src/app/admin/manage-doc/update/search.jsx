@@ -191,8 +191,8 @@ const HitItem = ({ hit, page, isRefetching, refetch }) => {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
-            <UpdateDoc hit={hit} page={page} refetch={refetch} />
           </form>
+          <UpdateDoc hit={hit} page={page} refetch={refetch} />
         </div>
       </dialog>
     </>

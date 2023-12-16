@@ -42,7 +42,9 @@ export const addOrUpdateDoc = async (doc) => {
         "Content-Type": "application/json",
         authorization: `Bearer ${process.env.ADMIN_API_KEY_LIB}`,
       },
-      body: JSON.stringify([{ ...doc }]),
+      body: Array.isArray(doc)
+        ? JSON.stringify(doc)
+        : JSON.stringify([{ ...doc }]),
     }
   );
 

@@ -7,6 +7,7 @@ const UpdateDoc = ({ hit, page, refetch }) => {
     ...hit,
     author: hit.author && hit.author.join(" || "),
     subject: hit.subject && hit.subject.join(" || "),
+    is_shared: hit?.is_shared ? true : false,
   });
 
   const handleOnClick = () => {
@@ -19,138 +20,142 @@ const UpdateDoc = ({ hit, page, refetch }) => {
       doc.identifier_uri.trim() === "" ||
       doc.subject.trim() === ""
     ) {
-      return setProcess("Vui lòng nhập đủ những trường bắt buộc");
-    }
-
-    Swal.fire({
-      title: "Bạn có chắc chắn muốn chỉnh sửa tài liệu không?",
-      icon: "question",
-      showCancelButton: true,
-      showConfirmButton: true,
-      cancelButtonText: "Huỷ",
-      confirmButtonText: "Xác nhận",
-      showLoaderOnConfirm: true,
-      allowEnterKey: false,
-      allowEscapeKey: false,
-      allowOutsideClick: () => !Swal.isLoading,
-      preConfirm: async () => {
-        const data = await fetch("/api/meilisearch/doc", {
-          method: "PUT",
-          body: JSON.stringify({
-            uuid: doc.uuid,
-            title: doc.title.trim(),
-            advisor:
-              !doc.advisor || doc.advisor.trim() === ""
-                ? null
-                : doc.advisor.trim(),
-            author: doc.author.trim() === "" ? null : doc.author.split("||"),
-            editor:
-              !doc.editor || doc.editor.trim() === ""
-                ? null
-                : doc.editor.trim(),
-            date_accessioned:
-              !doc.date_accessioned || doc.date_accessioned.trim() === ""
-                ? null
-                : doc.date_accessioned.trim(),
-            date_available:
-              !doc.date_available || doc.date_available.trim() === ""
-                ? null
-                : doc.date_available.trim(),
-            date_issued:
-              doc.date_issued.toString().trim() === ""
-                ? null
-                : doc.date_issued.toString().trim(),
-            department:
-              !doc.department || doc.department.trim() === ""
-                ? null
-                : doc.department.trim(),
-            description_abstract:
-              doc.description_abstract.trim() === ""
-                ? null
-                : doc.description_abstract.trim(),
-            description_provenance:
-              !doc.description_provenance ||
-              doc.description_provenance.trim() === ""
-                ? null
-                : doc.description_provenance.trim(),
-            description:
-              !doc.description || doc.description.trim() === ""
-                ? null
-                : doc.description.trim(),
-            format_extent:
-              !doc.format_extent || doc.format_extent.trim() === ""
-                ? null
-                : doc.format_extent.trim(),
-            format_mimetype:
-              !doc.format_mimetype || doc.format_mimetype.trim() === ""
-                ? null
-                : doc.format_mimetype.trim(),
-            identifier_citation:
-              !doc.identifier_citation || doc.identifier_citation.trim() === ""
-                ? null
-                : doc.identifier_citation.trim(),
-            identifier_issn:
-              !doc.identifier_issn || doc.identifier_issn.trim() === ""
-                ? null
-                : doc.identifier_issn.trim(),
-            identifier_other:
-              !doc.identifier_other || doc.identifier_other.trim() === ""
-                ? null
-                : doc.identifier_other.trim(),
-            identifier_uri:
-              !doc.identifier_uri || doc.identifier_uri.trim() === ""
-                ? null
-                : doc.identifier_uri.trim(),
-            language_iso:
-              !doc.language_iso || doc.language_iso.trim() === ""
-                ? null
-                : doc.language_iso.trim(),
-            publisher:
-              !doc.publisher || doc.publisher.trim() === ""
-                ? null
-                : doc.publisher.trim(),
-            relation_ispartofseries:
-              !doc.relation_ispartofseries ||
-              doc.relation_ispartofseries.trim() === ""
-                ? null
-                : doc.relation_ispartofseries.trim(),
-            relation_isversionof:
-              !doc.relation_isversionof ||
-              doc.relation_isversionof.trim() === ""
-                ? null
-                : doc.relation_isversionof.trim(),
-            rights:
-              !doc.rights || doc.rights.trim() === ""
-                ? null
-                : doc.rights.trim(),
-            size: !doc.size || doc.size.trim() === "" ? null : doc.size.trim(),
-            subject:
-              !doc.subject || doc.subject.trim() === ""
-                ? null
-                : doc.subject.split("||"),
-            title_alternative:
-              !doc.title_alternative || doc.title_alternative.trim() === ""
-                ? null
-                : doc.title_alternative.trim(),
-            type: !doc.type || doc.type.trim() === "" ? null : doc.type.trim(),
-            organization: doc.organization,
-            bitstreams:
-              !doc.bitstreams || doc.bitstreams.trim() === ""
-                ? null
-                : doc.bitstreams.trim(),
-          }),
-        });
-
-        if (data.ok) {
-          refetch({ refetchPage: (p, index) => index === page });
-          Swal.fire({
-            title: "Chỉnh sửa tài liệu thành công!",
-            icon: "success",
+      setProcess("Vui lòng nhập đủ những trường bắt buộc");
+    } else {
+      Swal.fire({
+        title: "Bạn có chắc chắn muốn chỉnh sửa tài liệu không?",
+        icon: "question",
+        showCancelButton: true,
+        showConfirmButton: true,
+        cancelButtonText: "Huỷ",
+        confirmButtonText: "Xác nhận",
+        showLoaderOnConfirm: true,
+        allowEnterKey: false,
+        allowEscapeKey: false,
+        allowOutsideClick: () => !Swal.isLoading,
+        preConfirm: async () => {
+          const data = await fetch("/api/meilisearch/doc", {
+            method: "PUT",
+            body: JSON.stringify({
+              uuid: doc.uuid,
+              title: doc.title.trim(),
+              advisor:
+                !doc.advisor || doc.advisor.trim() === ""
+                  ? null
+                  : doc.advisor.trim(),
+              author: doc.author.trim() === "" ? null : doc.author.split("||"),
+              editor:
+                !doc.editor || doc.editor.trim() === ""
+                  ? null
+                  : doc.editor.trim(),
+              date_accessioned:
+                !doc.date_accessioned || doc.date_accessioned.trim() === ""
+                  ? null
+                  : doc.date_accessioned.trim(),
+              date_available:
+                !doc.date_available || doc.date_available.trim() === ""
+                  ? null
+                  : doc.date_available.trim(),
+              date_issued:
+                doc.date_issued.toString().trim() === ""
+                  ? null
+                  : doc.date_issued.toString().trim(),
+              department:
+                !doc.department || doc.department.trim() === ""
+                  ? null
+                  : doc.department.trim(),
+              description_abstract:
+                doc.description_abstract.trim() === ""
+                  ? null
+                  : doc.description_abstract.trim(),
+              description_provenance:
+                !doc.description_provenance ||
+                doc.description_provenance.trim() === ""
+                  ? null
+                  : doc.description_provenance.trim(),
+              description:
+                !doc.description || doc.description.trim() === ""
+                  ? null
+                  : doc.description.trim(),
+              format_extent:
+                !doc.format_extent || doc.format_extent.trim() === ""
+                  ? null
+                  : doc.format_extent.trim(),
+              format_mimetype:
+                !doc.format_mimetype || doc.format_mimetype.trim() === ""
+                  ? null
+                  : doc.format_mimetype.trim(),
+              identifier_citation:
+                !doc.identifier_citation ||
+                doc.identifier_citation.trim() === ""
+                  ? null
+                  : doc.identifier_citation.trim(),
+              identifier_issn:
+                !doc.identifier_issn || doc.identifier_issn.trim() === ""
+                  ? null
+                  : doc.identifier_issn.trim(),
+              identifier_other:
+                !doc.identifier_other || doc.identifier_other.trim() === ""
+                  ? null
+                  : doc.identifier_other.trim(),
+              identifier_uri:
+                !doc.identifier_uri || doc.identifier_uri.trim() === ""
+                  ? null
+                  : doc.identifier_uri.trim(),
+              language_iso:
+                !doc.language_iso || doc.language_iso.trim() === ""
+                  ? null
+                  : doc.language_iso.trim(),
+              publisher:
+                !doc.publisher || doc.publisher.trim() === ""
+                  ? null
+                  : doc.publisher.trim(),
+              relation_ispartofseries:
+                !doc.relation_ispartofseries ||
+                doc.relation_ispartofseries.trim() === ""
+                  ? null
+                  : doc.relation_ispartofseries.trim(),
+              relation_isversionof:
+                !doc.relation_isversionof ||
+                doc.relation_isversionof.trim() === ""
+                  ? null
+                  : doc.relation_isversionof.trim(),
+              rights:
+                !doc.rights || doc.rights.trim() === ""
+                  ? null
+                  : doc.rights.trim(),
+              size:
+                !doc.size || doc.size.trim() === "" ? null : doc.size.trim(),
+              subject:
+                !doc.subject || doc.subject.trim() === ""
+                  ? null
+                  : doc.subject.split("||"),
+              title_alternative:
+                !doc.title_alternative || doc.title_alternative.trim() === ""
+                  ? null
+                  : doc.title_alternative.trim(),
+              type:
+                !doc.type || doc.type.trim() === "" ? null : doc.type.trim(),
+              organization: doc.organization,
+              bitstreams:
+                !doc.bitstreams || doc.bitstreams.trim() === ""
+                  ? null
+                  : doc.bitstreams.trim(),
+              is_shared: doc.is_shared,
+            }),
           });
-        } else
-          Swal.fire({ title: "Chỉnh sửa tài liệu thất bại!", icon: "error" });
-      },
-    });
+
+          if (data.ok) {
+            refetch({ refetchPage: (p, index) => index === page });
+            Swal.fire({
+              title: "Chỉnh sửa tài liệu thành công!",
+              icon: "success",
+            });
+          } else
+            Swal.fire({ title: "Chỉnh sửa tài liệu thất bại!", icon: "error" });
+        },
+      });
+    }
   };
 
   return (
@@ -511,6 +516,20 @@ const UpdateDoc = ({ hit, page, refetch }) => {
           className="input input-bordered w-[70%] border-bordercl "
           disabled
         />
+      </div>
+
+      <div className="flex gap-[10px] w-full justify-center items-center">
+        <h3 className="w-[30%]">Is_shared: </h3>
+        <div className="w-[70%]">
+          <input
+            type="checkbox"
+            value={doc.is_shared}
+            onChange={(e) =>
+              setDoc((pre) => ({ ...pre, is_shared: e.target.value }))
+            }
+            className="checkbox"
+          />
+        </div>
       </div>
 
       {process ? <p className="text-red-500">{process}</p> : <></>}

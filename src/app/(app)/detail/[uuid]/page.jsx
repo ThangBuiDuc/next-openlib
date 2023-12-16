@@ -1,7 +1,7 @@
 import { getMetadata } from "./getMetadata";
 import Header from "./header";
 import Content from "./content";
-
+import { currentUser } from "@clerk/nextjs";
 export async function generateMetadata({ params }) {
   const data = await getMetadata(params.uuid);
   return {
@@ -48,10 +48,30 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   const data = await getMetadata(params.uuid);
+  const user = await currentUser();
+
+  if (user?.id) {
+    return (
+      <div>
+        <Header
+          fullName={`${user.firstName} ${user.lastName}`}
+          publicMetadata={user.publicMetadata}
+        />
+        {data && (
+          <Content
+            content={data}
+            auth={true}
+            publicMetadata={user.publicMetadata}
+          />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div>
       <Header />
-      {data && <Content content={data} />}
+      {data && <Content content={data} auth={false} />}
     </div>
   );
 }
