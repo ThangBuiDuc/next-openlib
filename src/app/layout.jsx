@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ReactQueryProvider from "./reactQueryProvider";
 import localFont from "next/font/local";
 import { viVN } from "@clerk/localizations";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const montserrat = localFont({
   src: [
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <html lang="vi">
           <body className={`${montserrat.className} bg-white `}>
             {children}
+            <SpeedInsights />
           </body>
         </html>
       </ClerkProvider>
