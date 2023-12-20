@@ -29,7 +29,7 @@ const Index = ({ fullName, publicMetadata }) => {
           className="rounded-[0px_40px_40px_0px] pr-[5px] bg-[#b0ddeb80] h-[34px] md:h-[55px]"
         />
       </div>
-      {!fullName && !publicMetadata ? (
+      {/* {!fullName && !publicMetadata ? (
         <></>
       ) : (
         <div className="flex justify-center flex-col">
@@ -45,7 +45,7 @@ const Index = ({ fullName, publicMetadata }) => {
             </>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

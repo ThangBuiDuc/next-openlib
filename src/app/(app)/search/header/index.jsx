@@ -28,7 +28,7 @@ export default function Index({ fullName, publicMetadata }) {
           openOnFocus
         />
       </div>
-      {!fullName && !publicMetadata ? (
+      {/* {!fullName && !publicMetadata ? (
         <></>
       ) : (
         <div className="flex justify-center flex-col">
@@ -44,7 +44,7 @@ export default function Index({ fullName, publicMetadata }) {
             </>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 }
