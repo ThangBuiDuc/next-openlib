@@ -161,10 +161,11 @@ const UpdateDoc = ({ hit, page, refetch }) => {
   return (
     <div className="flex flex-col gap-[20px] w-[80%]">
       <div className="flex gap-[10px] w-full justify-center items-center">
-        <h3 className="w-[30%]">Title: </h3>
+        <h3 className="w-[30%]">
+          Title<span className="text-red-600">*</span>:{" "}
+        </h3>
 
         <div className="indicator w-[70%]">
-          <span className="indicator-item badge">Bắt buộc</span>
           <input
             type="text"
             value={doc.title}
@@ -189,9 +190,10 @@ const UpdateDoc = ({ hit, page, refetch }) => {
       </div>
 
       <div className="flex gap-[10px] w-full justify-center items-center">
-        <h3 className="w-[30%]">Author: </h3>
+        <h3 className="w-[30%]">
+          Author<span className="text-red-600">*</span>:{" "}
+        </h3>
         <div className="indicator w-[70%]">
-          <span className="indicator-item badge">Bắt buộc</span>
           <input
             type="text"
             placeholder="Lò Văn Chiến || Bùi Thị Ngọc"
@@ -241,9 +243,10 @@ const UpdateDoc = ({ hit, page, refetch }) => {
       </div>
 
       <div className="flex gap-[10px] w-full justify-center items-center">
-        <h3 className="w-[30%]">Date_issued: </h3>
+        <h3 className="w-[30%]">
+          Date_issued<span className="text-red-600">*</span>:{" "}
+        </h3>
         <div className="indicator w-[70%]">
-          <span className="indicator-item badge">Bắt buộc</span>
           <input
             type="text"
             placeholder="2023"
@@ -269,9 +272,10 @@ const UpdateDoc = ({ hit, page, refetch }) => {
       </div>
 
       <div className="flex gap-[10px] w-full justify-center items-center">
-        <h3 className="w-[30%]">Description_abstract: </h3>
+        <h3 className="w-[30%]">
+          Description_abstract<span className="text-red-600">*</span>:{" "}
+        </h3>
         <div className="indicator w-[70%]">
-          <span className="indicator-item badge">Bắt buộc</span>
           <input
             type="text"
             value={doc.description_abstract}
@@ -366,9 +370,10 @@ const UpdateDoc = ({ hit, page, refetch }) => {
       </div>
 
       <div className="flex gap-[10px] w-full justify-center items-center">
-        <h3 className="w-[30%]">Identifier_uri: </h3>
+        <h3 className="w-[30%]">
+          Identifier_uri<span className="text-red-600">*</span>:{" "}
+        </h3>
         <div className="indicator w-[70%]">
-          <span className="indicator-item badge">Bắt buộc</span>
           <input
             type="text"
             value={doc.identifier_uri}
@@ -459,9 +464,10 @@ const UpdateDoc = ({ hit, page, refetch }) => {
       </div>
 
       <div className="flex gap-[10px] w-full justify-center items-center">
-        <h3 className="w-[30%]">Subject: </h3>
+        <h3 className="w-[30%]">
+          Subject<span className="text-red-600">*</span>:{" "}
+        </h3>
         <div className="indicator w-[70%]">
-          <span className="indicator-item badge">Bắt buộc</span>
           <input
             type="text"
             placeholder="Trồng trọt || Chăn nuôi || Văn học"
@@ -540,7 +546,7 @@ const UpdateDoc = ({ hit, page, refetch }) => {
         }}
         className="btn w-fit border-bordercl self-center"
       >
-        Chỉnh sửa
+        Lưu
       </button>
     </div>
   );

@@ -375,7 +375,7 @@ const Content = ({ publicMetadata }) => {
     <>
       <div className="flex flex-col gap-[20px] p-[10px]">
         <div className="justify-between flex">
-          <button
+          {/* <button
             onClick={() => {
               setDoc({
                 title: "",
@@ -412,7 +412,7 @@ const Content = ({ publicMetadata }) => {
             className="btn w-fit border-bordercl self-center"
           >
             Làm mới
-          </button>
+          </button> */}
           <div className="flex gap-2">
             <details className="dropdown ">
               <summary className="btn border-bordercl">Tải mẫu</summary>
@@ -444,10 +444,11 @@ const Content = ({ publicMetadata }) => {
           className="flex flex-col gap-[20px] w-[80%]"
         >
           <div className="flex gap-[10px] w-full justify-center items-center">
-            <h3 className="w-[30%]">Title: </h3>
+            <h3 className="w-[30%]">
+              Title<span className="text-red-600">*</span>:{" "}
+            </h3>
 
             <div className="indicator w-[70%]">
-              <span className="indicator-item badge">Bắt buộc</span>
               <input
                 type="text"
                 value={doc.title}
@@ -472,9 +473,10 @@ const Content = ({ publicMetadata }) => {
           </div>
 
           <div className="flex gap-[10px] w-full justify-center items-center">
-            <h3 className="w-[30%]">Author: </h3>
+            <h3 className="w-[30%]">
+              Author<span className="text-red-600">*</span>:{" "}
+            </h3>
             <div className="indicator w-[70%]">
-              <span className="indicator-item badge">Bắt buộc</span>
               <input
                 type="text"
                 placeholder="Lò Văn Chiến || Bùi Thị Ngọc"
@@ -524,9 +526,10 @@ const Content = ({ publicMetadata }) => {
           </div>
 
           <div className="flex gap-[10px] w-full justify-center items-center">
-            <h3 className="w-[30%]">Date_issued: </h3>
+            <h3 className="w-[30%]">
+              Date_issued<span className="text-red-600">*</span>:{" "}
+            </h3>
             <div className="indicator w-[70%]">
-              <span className="indicator-item badge">Bắt buộc</span>
               <input
                 type="text"
                 placeholder="2023"
@@ -552,9 +555,10 @@ const Content = ({ publicMetadata }) => {
           </div>
 
           <div className="flex gap-[10px] w-full justify-center items-center">
-            <h3 className="w-[30%]">Description_abstract: </h3>
+            <h3 className="w-[30%]">
+              Description_abstract<span className="text-red-600">*</span>:{" "}
+            </h3>
             <div className="indicator w-[70%]">
-              <span className="indicator-item badge">Bắt buộc</span>
               <input
                 type="text"
                 value={doc.descriptionAbstract}
@@ -649,9 +653,10 @@ const Content = ({ publicMetadata }) => {
           </div>
 
           <div className="flex gap-[10px] w-full justify-center items-center">
-            <h3 className="w-[30%]">Identifier_uri: </h3>
+            <h3 className="w-[30%]">
+              Identifier_uri<span className="text-red-600">*</span>:{" "}
+            </h3>
             <div className="indicator w-[70%]">
-              <span className="indicator-item badge">Bắt buộc</span>
               <input
                 type="text"
                 value={doc.identifierUri}
@@ -744,9 +749,10 @@ const Content = ({ publicMetadata }) => {
           </div>
 
           <div className="flex gap-[10px] w-full justify-center items-center">
-            <h3 className="w-[30%]">Subject: </h3>
+            <h3 className="w-[30%]">
+              Subject<span className="text-red-600">*</span>:{" "}
+            </h3>
             <div className="indicator w-[70%]">
-              <span className="indicator-item badge">Bắt buộc</span>
               <input
                 type="text"
                 placeholder="Trồng trọt || Chăn nuôi || Văn học"
@@ -797,9 +803,10 @@ const Content = ({ publicMetadata }) => {
 
           {publicMetadata.isAdmin ? (
             <div className="flex gap-[10px] w-full justify-center items-center">
-              <h3 className="w-[30%]">Organization: </h3>
+              <h3 className="w-[30%]">
+                Organization<span className="text-red-600">*</span>:{" "}
+              </h3>
               <div className="indicator w-[70%]">
-                <span className="indicator-item badge">Bắt buộc</span>
                 <input
                   type="text"
                   value={doc.organization}
@@ -842,7 +849,7 @@ const Content = ({ publicMetadata }) => {
             }}
             className="btn w-fit border-bordercl self-center"
           >
-            Thêm mới
+            Lưu
           </button>
         </form>
       </div>

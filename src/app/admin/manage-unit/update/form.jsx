@@ -103,7 +103,7 @@ const Form = ({ data, isRefetching }) => {
         <span className="loading loading-spinner loading-lg self-center"></span>
       ) : (
         <button className="btn w-fit border-bordercl self-center hover:border-bordercl">
-          Chỉnh sửa
+          Lưu
         </button>
       )}
     </form>

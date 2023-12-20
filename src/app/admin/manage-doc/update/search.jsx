@@ -168,7 +168,7 @@ const HitItem = ({ hit, page, isRefetching, refetch }) => {
             {isRefetching ? (
               <span className="loading loading-infinity loading-lg"></span>
             ) : (
-              "Chỉnh sửa"
+              "Sửa"
             )}
           </button>
           <button
