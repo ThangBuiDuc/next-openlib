@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 import { Fragment } from "react";
 import UpdateDoc from "./updateDoc";
 const HitItem = ({ hit, page, isRefetching, refetch }) => {
