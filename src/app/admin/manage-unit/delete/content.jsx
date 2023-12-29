@@ -15,7 +15,6 @@ const Content = () => {
       }).then((res) => res.json());
     },
   });
-  console.log(data);
   useEffect(() => {
     if (data.data)
       setListUser(
