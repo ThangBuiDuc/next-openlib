@@ -4,8 +4,11 @@ import { LiaEyeSolid, LiaEyeSlash } from "react-icons/lia";
 import Swal from "sweetalert2";
 import Select from "react-select";
 import { useQueryClient } from "@tanstack/react-query";
+import { useUser } from "@clerk/nextjs";
 
 const AddUnit = ({ organization }) => {
+  const { user } = useUser();
+
   const queryClient = useQueryClient();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -112,9 +115,21 @@ const AddUnit = ({ organization }) => {
         <div className="flex gap-[10px] w-full justify-center items-center">
           <h3 className="w-[40%]">Đơn vị: </h3>
           <Select
+            isDisabled
             className="w-[60%] "
             placeholder="Chọn đơn vị"
-            value={selected}
+            value={
+              !user.publicMetadata.isAdmin
+                ? Object.keys(organization)
+                    .map((item, index) => ({
+                      value: index,
+                      label: item,
+                    }))
+                    .find(
+                      (item) => item.label === user.publicMetadata.organization
+                    )
+                : selected
+            }
             options={Object.keys(organization).map((item, index) => ({
               value: index,
               label: item,

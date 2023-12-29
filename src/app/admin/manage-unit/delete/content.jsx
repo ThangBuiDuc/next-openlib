@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SubContent from "./subContent";
+import { useUser } from "@clerk/nextjs";
 
 const Content = () => {
+  const { user } = useUser();
   const [listUser, setListUser] = useState(null);
   const data = useQuery({
     queryKey: ["ADMIN_LIST_USER"],
@@ -13,11 +15,25 @@ const Content = () => {
       }).then((res) => res.json());
     },
   });
-
+  console.log(data);
   useEffect(() => {
     if (data.data)
       setListUser(
-        data.data.result.map((item) => ({ ...item, isChecked: false }))
+        !user.publicMetadata.isAdmin
+          ? data.data.result
+              .map((item) => ({
+                ...item,
+                isChecked: false,
+              }))
+              .filter(
+                (item) =>
+                  item.public_metadata.organization ===
+                  user.publicMetadata.organization
+              )
+          : data.data.result.map((item) => ({
+              ...item,
+              isChecked: false,
+            }))
       );
   }, [data.data]);
 
