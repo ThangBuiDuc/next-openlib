@@ -25,14 +25,14 @@ const montserrat = localFont({
 });
 
 export default function RootLayout({ children }) {
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-Z7Y9M9XWNW");
-  }, []);
+  // useEffect(() => {
+  //   window.dataLayer = window.dataLayer || [];
+  //   function gtag() {
+  //     dataLayer.push(arguments);
+  //   }
+  //   gtag("js", new Date());
+  //   gtag("config", "G-Z7Y9M9XWNW");
+  // }, []);
 
   return (
     <ReactQueryProvider>
