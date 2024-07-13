@@ -44,18 +44,14 @@ export default function RootLayout({ children }) {
               src="https://www.googletagmanager.com/gtag/js?id=G-Z7Y9M9XWNW"
               strategy="afterInteractive"
             />
-            <Script
-              id="gtag-init"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-              window.dataLayer = window.dataLayer || [];
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+          window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-Z7Y9M9XWNW');
-            `,
-              }}
-            />
+        `}
+            </Script>
           </head>
           <body className={`${montserrat.className} bg-white `}>
             {/* <Analytics /> */}
