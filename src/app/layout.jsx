@@ -5,7 +5,7 @@ import ReactQueryProvider from "./reactQueryProvider";
 import localFont from "next/font/local";
 import { viVN } from "@clerk/localizations";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = localFont({
@@ -40,6 +40,7 @@ export default function RootLayout({ children }) {
             </Script> */}
 
             {children}
+            <GoogleAnalytics gaId="G-Z7Y9M9XWNW" />
             <SpeedInsights />
           </body>
         </html>
