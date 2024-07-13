@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
             />
           </head>
           <body className={`${montserrat.className} bg-white `}>
-            <Analytics />
+            {/* <Analytics /> */}
             {/* <Script
               async
               src="https://www.googletagmanager.com/gtag/js?id=G-Z7Y9M9XWNW"
@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
             </Script> */}
 
             {children}
-            <GoogleAnalytics gaId="G-Z7Y9M9XWNW" />
+            {/* <GoogleAnalytics gaId="G-Z7Y9M9XWNW" /> */}
             <SpeedInsights />
           </body>
         </html>
