@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <html lang="vi">
           <body className={`${montserrat.className} bg-white `}>
             <Analytics />
-            <Script
+            {/* <Script
               async
               src="https://www.googletagmanager.com/gtag/js?id=G-Z7Y9M9XWNW"
             ></Script>
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || []; function gtag()
               {dataLayer.push(arguments)}
               gtag('js', new Date()); gtag('config', 'G-Z7Y9M9XWNW');
-            </Script>
+            </Script> */}
 
             {children}
             <SpeedInsights />
