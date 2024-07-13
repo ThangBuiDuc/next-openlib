@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { viVN } from "@clerk/localizations";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = localFont({
   src: [
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <ClerkProvider localization={viVN}>
         <html lang="vi">
           <body className={`${montserrat.className} bg-white `}>
+            <Analytics />
             <Script
               async
               src="https://www.googletagmanager.com/gtag/js?id=G-Z7Y9M9XWNW"
