@@ -5,8 +5,10 @@ import ReactQueryProvider from "./reactQueryProvider";
 import localFont from "next/font/local";
 import { viVN } from "@clerk/localizations";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+// import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
+import { useEffect } from "react";
 
 const montserrat = localFont({
   src: [
@@ -23,10 +25,26 @@ const montserrat = localFont({
 });
 
 export default function RootLayout({ children }) {
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-Z7Y9M9XWNW");
+  }, []);
+
   return (
     <ReactQueryProvider>
       <ClerkProvider localization={viVN}>
         <html lang="vi">
+          <head>
+            <Script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-Z7Y9M9XWNW"
+              strategy="afterInteractive"
+            />
+          </head>
           <body className={`${montserrat.className} bg-white `}>
             <Analytics />
             {/* <Script
